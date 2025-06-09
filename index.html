@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Product Manager - AI Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 60px 40px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+        }
+
+        .header .subtitle {
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .header .summary {
+            font-size: 1.1rem;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .project {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-left: 5px solid #667eea;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .project h3 {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .project-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .project-description {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .metric {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            border: 2px solid #e9ecef;
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .metric-label {
+            font-size: 0.9rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .tech-tag {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            border-top: 4px solid #667eea;
+        }
+
+        .skill-category h4 {
+            font-size: 1.3rem;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            padding: 8px 0;
+            color: #555;
+            font-size: 1rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .skill-category li:last-child {
+            border-bottom: none;
+        }
+
+        .contact {
+            text-align: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 20px;
+            padding: 40px;
+        }
+
+        .contact h2 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .contact h2::after {
+            background: white;
+        }
+
+        .contact p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .contact-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .header, .section {
+                padding: 30px 20px;
+            }
+            
+            .metrics {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <h1>Technical Product Manager</h1>
+            <p class="subtitle">AI & Machine Learning Solutions</p>
+            <p class="summary">
+                Experienced Technical Product Owner with a proven track record of delivering AI-powered solutions that drive significant business impact. Specialized in bridging technical development with stakeholder needs, with hands-on experience in Contact Center AI, machine learning platforms, and data analytics.
+            </p>
+        </div>
+
+        <!-- Key Projects Section -->
+        <div class="section">
+            <h2>Key Projects & Achievements</h2>
+            
+            <div class="project">
+                <h3>
+                    <div class="project-icon">AI</div>
+                    Contact Center AI Solution
+                </h3>
+                <p class="project-description">
+                    Led the deployment of a comprehensive Contact Center AI solution as Technical Product Owner, aligning development teams with business stakeholder needs while contributing to technical development. Managed stakeholder relationships through weekly progress meetings and ensured complete alignment on project scope and processes.
+                </p>
+                
+                <div class="metrics">
+                    <div class="metric">
+                        <div class="metric-value">48%</div>
+                        <div class="metric-label">Call Volume Reduction</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">1M+</div>
+                        <div class="metric-label">Calls Handled/Year</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">4</div>
+                        <div class="metric-label">Key Call Scenarios</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">18</div>
+                        <div class="metric-label">Months Duration</div>
+                    </div>
+                </div>
+
+                <div class="tech-stack">
+                    <span class="tech-tag">Dialogflow CX</span>
+                    <span class="tech-tag">Google Cloud Functions</span>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Voice AI</span>
+                    <span class="tech-tag">Natural Language Processing</span>
+                </div>
+            </div>
+
+            <div class="project">
+                <h3>
+                    <div class="project-icon">🌱</div>
+                    Seed to Text AI Solution
+                </h3>
+                <p class="project-description">
+                    Independently developed an AI-powered seed to text solution that dramatically reduced manual effort for offshore team members. This solution automated text generation processes and streamlined workflows across multiple teams.
+                </p>
+                
+                <div class="metrics">
+                    <div class="metric">
+                        <div class="metric-value">75%</div>
+                        <div class="metric-label">Manual Effort Reduction</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">100%</div>
+                        <div class="metric-label">Individual Development</div>
+                    </div>
+                </div>
+
+                <div class="tech-stack">
+                    <span class="tech-tag">Machine Learning</span>
+                    <span class="tech-tag">Natural Language Generation</span>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">AI/ML APIs</span>
+                </div>
+            </div>
+
+            <div class="project">
+                <h3>
+                    <div class="project-icon">📊</div>
+                    Analytics Dashboards & Tools
+                </h3>
+                <p class="project-description">
+                    Created multiple comprehensive dashboards for stakeholders to track member trends and operational metrics. Developed an all-in-one lookup tool for RCNO (Revenue Cycle Network Operations) to accelerate discrepancy resolution processes.
+                </p>
+                
+                <div class="metrics">
+                    <div class="metric">
+                        <div class="metric-value">Multi</div>
+                        <div class="metric-label">Dashboard Solutions</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">Fast</div>
+                        <div class="metric-label">Discrepancy Resolution</div>
+                    </div>
+                </div>
+
+                <div class="tech-stack">
+                    <span class="tech-tag">Looker Studio</span>
+                    <span class="tech-tag">BigQuery</span>
+                    <span class="tech-tag">Data Visualization</span>
+                    <span class="tech-tag">SQL</span>
+                    <span class="tech-tag">Business Intelligence</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technical Skills Section -->
+        <div class="section">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>AI/ML Platforms</h4>
+                    <ul>
+                        <li>Dialogflow CX</li>
+                        <li>Google Cloud AI</li>
+                        <li>Contact Center AI (CCAI)</li>
+                        <li>Natural Language Processing</li>
+                        <li>Voice AI Solutions</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h4>Development & Cloud</h4>
+                    <ul>
+                        <li>Python Programming</li>
+                        <li>Google Cloud Functions</li>
+                        <li>Cloud Architecture</li>
+                        <li>API Development</li>
+                        <li>Serverless Computing</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h4>Data & Analytics</h4>
+                    <ul>
+                        <li>BigQuery</li>
+                        <li>Looker Studio</li>
+                        <li>SQL</li>
+                        <li>Data Visualization</li>
+                        <li>Business Intelligence</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h4>Product Management</h4>
+                    <ul>
+                        <li>Technical Product Ownership</li>
+                        <li>Stakeholder Management</li>
+                        <li>Cross-functional Team Leadership</li>
+                        <li>Agile/Scrum Methodologies</li>
+                        <li>Requirements Gathering</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="section contact">
+            <h2>Let's Connect</h2>
+            <p>Ready to discuss how I can drive AI product success at your organization</p>
+            <a href="mailto:your.email@example.com" class="contact-button">Get in Touch</a>
+        </div>
+    </div>
+</body>
+</html>
